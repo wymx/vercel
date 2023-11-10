@@ -1,5 +1,5 @@
 <template>
     <div>
-        home页面测试测试
+        home页面
     </div>
 </template>
