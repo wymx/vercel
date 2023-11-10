@@ -5,7 +5,7 @@ const userRoutes = {
   children: [
     {
       path: '/user',
-      name: '会员首页',
+      name: '用户首页',
       component: defineAsyncComponent(() => import('@/pages/user/user/user.vue')),
       meta: {
         requiresAuth: true,

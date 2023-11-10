@@ -8,15 +8,9 @@ const homeRoutes = {
       component: defineAsyncComponent(() => import('@/pages/home/home/home.vue')),
       meta: {
         isHome: true,
+        // requiresAuth: true,//是否需要授权登录
       },
     },
-    {
-      path: '/home/searchList',
-      component: defineAsyncComponent(() => import('@/pages/home/searchList/searchList.vue')),
-      meta: {
-        // requiresAuth: true,
-      },
-    }
   ],
 };
 
