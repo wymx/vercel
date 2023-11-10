@@ -38,7 +38,7 @@ export default defineConfig({
       // 反向代理配置
       "/api": {
         // 配置接口调用目标地址
-        target: "https://www.xxxx.com",
+        target: "https://wymx.github.io",
         // 当进行代理时，在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
         changeOrigin: true,
         // 替换target中的请求地址，请求时以 /api 开头
