@@ -1,5 +1,5 @@
 <template>
     <div>
-        user页面
+        user页面测试
     </div>
 </template>
