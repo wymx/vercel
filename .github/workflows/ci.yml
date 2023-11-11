@@ -1,26 +1,26 @@
 name: GitHub Actions Build and Deploy Demo
-  on:
-    push:
-      branches:
-        - master
-  jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-        uses: actions/checkout\@v2
+on:
+  push:
+   branches:
+    - master
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      uses: actions/checkout@v2
+      with:
+      persist-credentials: false
+
+      - name: Install and Build
+        run: |
+            npm install
+            npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-        persist-credentials: false
-
-        # test
-        - name: Install and Build
-          run: |
-              npm install
-              npm run build
-
-        - name: Deploy
-          uses: JamesIves/github-pages-deploy-action@v4
-          with:
-            branch: gh-pages 
-            folder: dist 
-            clean: true`       
+          branch: gh-pages 
+          folder: dist 
+          clean: true`      
