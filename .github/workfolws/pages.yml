@@ -3,7 +3,8 @@ name: pages
 # 在 main 分支被推送代码时触发 actions
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -47,7 +48,7 @@ jobs:
 
       # 构建项目
       - name: Build
-        run: pnpm build
+        run: pnpm run build
 
       # 将构建后的文件部署到 gh-pages 分支
       - name: Deploy
