@@ -32,6 +32,7 @@ export default ({ mode }) => {
       host: "0.0.0.0",
       port: 8000,
       open: true,
+      cors: true,
       https: false,
       proxy: {
         "/api": {
@@ -44,6 +45,9 @@ export default ({ mode }) => {
     },
     build: {
       rollupOptions: {
+        input: {
+          index: path.resolve(__dirname, "index.html")
+        },
         output: {
           chunkFileNames: "static/js/[name]-[hash].js",
           entryFileNames: "static/js/[name]-[hash].js",
