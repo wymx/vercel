@@ -5,11 +5,11 @@
     </div>
 </template>
 <script setup>
-// import   bannerList   from '../../../apis/home/home';
-import request from '../../../utils/request/index';
+import  { getOpenId }  from '@/apis';
+// import request from '../../../utils/request/index';
 
 const shortQR = async () => {
-    const info = await request.get('/getOpenId');
+    const info = await getOpenId('/getOpenId');
     console.log("aaaaaaaaa",info);
 };
 </script>
