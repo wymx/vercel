@@ -1,8 +1,11 @@
 name: pages
 
-# 在 main 分支被推送代码时触发 actions
+# 由 main 分支进行 push 操作触发构建 
+# 向 main 分支提交 pull request 再触发构建(减少不必要的构建时间)
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:

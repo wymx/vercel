@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: red;color: blue;">
+    <div style="">
         home页面
     </div>
 </template>
