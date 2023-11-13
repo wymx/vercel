@@ -30,6 +30,7 @@ var user = {
 const temp_id = '8ckkRA7zT1Z-Whe7UDktzCB--UDlYkAh2-CtAM-tYnY' // 填写你申请选用的模板id
 
 app.get('/', (req, res) => {
+	console.log("客户端/发来：", req.query.code)
 	res.send('ok')
 })
 
@@ -99,7 +100,7 @@ app.post('/generateURLLink', (req, res) => {
 
 // 监听 3000 端口号 | 127.0.0.1:3000
 app.listen('3000', () => {
-	console.log('Server Running ...')
+	console.log('Server Running 3000...')
 })
 
 
