@@ -1,0 +1,1 @@
+import{_ as r}from"./index-c2b65c57.js";import{r as e,o,h as t,c as s}from"./vue-a0de76f8.js";const a=r({},[["render",function(r,a){const n=e("router-view");return o(),t("div",null,[(o(),s(n,{key:r.$route.fullPath}))])}]]);export{a as default};
