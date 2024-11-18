@@ -47,6 +47,18 @@ jobs:
       # 安装项目依赖
       - name: Install dependencies
         run: pnpm install
+        
+      # 配置环境变量
+      - name: Set up environment variables
+        run: |
+          echo "设置环境变量"
+        env:
+          VITE_IMAGEKIT_PUBLIC_KEY: ${{ secrets.VITE_IMAGEKIT_PUBLIC_KEY }}
+          VITE_IMAGEKIT_PRIVATE_KEY: ${{ secrets.VITE_IMAGEKIT_PRIVATE_KEY }}
+          VITE_IMAGEKIT_URL_ENDPOINT: ${{ secrets.VITE_IMAGEKIT_URL_ENDPOINT }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
+          
 
       # 构建项目
       - name: Build

@@ -1,72 +1,63 @@
-//这边封装的包含一些常规请求，post、get等等
-import axios from 'axios'
-//此处的baseURL即为我们根据环境启动时候设置的后端服务地址
-const service = axios.create({
+import axios from 'axios';
+
+const defaultConfig = {
   baseURL: import.meta.env.VITE_BASE_URL,
-  timeout: 300 * 1000
-})
+  timeout: 300 * 1000,
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+  },
+};
+
+const service = axios.create(defaultConfig);
 
 service.interceptors.request.use(
   config => {
-    // if (store.getters.token) {
-    //   config.headers['X-Auth-Token'] = getToken() 
-    // }
     if (config.method === 'get') {
       config.params = {
-        t: Date.parse(new Date()) / 1000,
-        ...config.params
-      }
+        t: Date.now() / 1000,
+        ...config.params,
+      };
     }
-    return config
-  }
-)
-service.interceptors.response.use(
-  response => {
-    return response
+    return config;
   },
-)
+  error => Promise.reject(error)
+);
+
+service.interceptors.response.use(
+  response => response.data,
+  error => Promise.reject(error)
+);
+
+const createRequest = (method, url, options = {}, customOptions = {}) => {
+  return service[method](url, { ...options, ...customOptions });
+};
 
 export default {
-  get (url, params) {
-    return service.get(url, {
-      params: params,
-    })
+  get(url, params = {}, customOptions = {}) {
+    return createRequest('get', url, { params }, customOptions);
   },
-  put (url, data) {
-    return service.put(url, data)
+  put(url, data = {}, customOptions = {}) {
+    return createRequest('put', url, { data }, customOptions);
   },
-  post (url, data) {
-    return service.post(url, data)
+  post(url, data = {}, customOptions = {}) {
+    return createRequest('post', url, { data }, customOptions);
   },
-  delete (url, params) {
-    return service.delete(url, {
-      params: params,
-    })
+  delete(url, params = {}, customOptions = {}) {
+    return createRequest('delete', url, { params }, customOptions);
   },
-  data_delete (url, data) {
-    return service.delete(url, {
-      data: data,
-    })
+  data_delete(url, data = {}, customOptions = {}) {
+    return createRequest('delete', url, { data }, customOptions);
   },
-  post_download (url, data) {
-    return service.post(url, data, {
-      responseType: 'blob'
-    })
+  post_download(url, data = {}, customOptions = {}) {
+    return createRequest('post', url, { data, responseType: 'blob' }, customOptions);
   },
-  put_download (url, data) {
-    return service.put(url, data, {
-      responseType: 'blob'
-    })
+  put_download(url, data = {}, customOptions = {}) {
+    return createRequest('put', url, { data, responseType: 'blob' }, customOptions);
   },
-  download (url, params) {
-    return service.get(url, {
-      params: params,
-      responseType: 'blob',
-    })
+  download(url, params = {}, customOptions = {}) {
+    return createRequest('get', url, { params, responseType: 'blob' }, customOptions);
   },
-  post_download_arraybuffer (url, data) {
-    return service.post(url, data, {
-      responseType: 'arraybuffer'
-    })
+  post_download_arraybuffer(url, data = {}, customOptions = {}) {
+    return createRequest('post', url, { data, responseType: 'arraybuffer' }, customOptions);
   },
-}
+};

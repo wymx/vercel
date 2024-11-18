@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
     "axios": "^1.6.1",
+    "http-proxy-middleware": "^2.0.6",
+    "imagekit": "^5.2.0",
     "terser": "^5.24.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
